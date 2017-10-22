@@ -1,0 +1,19 @@
+A= rand(50,900);
+A= vertcat(A,A,A,A);
+[p,d,q]=svds(A,30);
+B =p*d*transpose(q); 
+C=zeros(900, 2);
+for i=1:900
+    y=A(:,i);
+    x=A(:,1);
+    C(i,1)=dot(x,y)/(norm(x)*norm(y));
+    C(i,2)= i;
+end
+D=sortrows(C);
+D(893:900,1);
+E=sortrows(C(:,2));
+F =zeros(900, 2);
+F = cat(2,D,E);
+
+M= D(893:900,:);
+M= D(893:900,:)
